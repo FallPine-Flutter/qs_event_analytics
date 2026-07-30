@@ -1,6 +1,6 @@
 name: qs_event_analytics
 description: "一个轨迹打点分析的插件"
-version: 1.0.8
+version: 1.0.9
 homepage: "https://github.com/fallpine/qs_event_analytics"
 
 environment:
