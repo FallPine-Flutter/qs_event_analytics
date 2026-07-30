@@ -11,16 +11,12 @@ class FirebaseAnalyticTool {
   /// 打点
   static Future<void> addEvent({
     required String name,
-    required String version,
     Map<String, Object>? parameters,
   }) async {
-    // 获取版本号
-    var eventName = "${name}_${version.replaceAll(".", "")}";
-
     // 断言：事件名长度不能超过40
-    assert(eventName.length <= 40, '事件名长度不能超过40个字符');
+    assert(name.length <= 40, '事件名长度不能超过40个字符');
 
-    await _analytics.logEvent(name: eventName, parameters: parameters);
+    await _analytics.logEvent(name: name, parameters: parameters);
   }
 
   /// Property

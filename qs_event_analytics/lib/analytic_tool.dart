@@ -68,10 +68,7 @@ class AnalyticTool {
     }
 
     // Firebase打点
-    FirebaseAnalyticTool.addEvent(
-      name: "${code}_${type.firebaseTypeCode}",
-      version: _appVersion,
-    );
+    FirebaseAnalyticTool.addEvent(name: "${code}_${type.firebaseTypeCode}");
 
     // 接口记录
     recordEvent(
