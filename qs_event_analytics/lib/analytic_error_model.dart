@@ -9,11 +9,11 @@ class AnalyticErrorModel {
   }
 
   Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['id'] = id;
-    data['data'] = data;
+    final json = <String, dynamic>{};
+    json['id'] = id;
+    json['data'] = data;
 
-    return data;
+    return json;
   }
 
   /// 数据库表字段

@@ -13,7 +13,7 @@
 
 ```yaml
 dependencies:
-  qs_event_analytics: ^1.0.8
+  qs_event_analytics: ^1.1.0
 ```
 
 如果使用本地路径调试：
@@ -223,6 +223,8 @@ final sessionId = AnalyticTool.getInstance().sessionId;
 业务接口上报失败时，插件会将事件写入本地 `sqflite` 数据库。
 
 当网络恢复后，插件会自动读取失败队列并重新上报；重试成功后会删除本地记录。
+
+从 `1.1.0` 开始，失败事件写入本地数据库时会正确序列化事件数据，建议使用失败重试功能的项目升级到 `1.1.0` 或更高版本。
 
 如果某些事件不需要失败重试，可在初始化时传入 `ignoreFailedEventCodes`：
 
