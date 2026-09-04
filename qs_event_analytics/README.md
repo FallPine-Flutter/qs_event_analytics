@@ -13,7 +13,7 @@
 
 ```yaml
 dependencies:
-  qs_event_analytics: ^1.1.0
+  qs_event_analytics: ^1.1.1
 ```
 
 如果使用本地路径调试：
@@ -220,11 +220,16 @@ final sessionId = AnalyticTool.getInstance().sessionId;
 
 ## 失败重试
 
-业务接口上报失败时，插件会将事件写入本地 `sqflite` 数据库。
+通过 `addEvent()` 上报业务接口失败时，未被 `ignoreFailedEventCodes` 排除的事件会写入本地 `sqflite` 数据库 `analytic_error.db` 的 `analytic_error_table` 表。记录包含主键 `id` 和事件 JSON 字符串 `data`，不包含失败原因或重试次数。Firebase 上报不使用这套本地失败队列。
 
-当网络恢复后，插件会自动读取失败队列并重新上报；重试成功后会删除本地记录。
+收到网络已连接的通知时（包括初始化网络检查和后续网络状态变化），插件会自动读取失败队列并重新上报；重试成功后按记录主键删除本地数据，失败则保留，等待后续触发。当前没有定时重试、重试次数上限或退避策略。
 
-从 `1.1.0` 开始，失败事件写入本地数据库时会正确序列化事件数据，建议使用失败重试功能的项目升级到 `1.1.0` 或更高版本。
+版本修复说明：
+
+- `1.1.0`：修复失败事件写入数据库时的序列化问题。
+- `1.1.1`：修复读取失败记录时未恢复 `id`，导致补发成功后无法删除、后续可能重复补发的问题。已有数据库记录无需迁移或清空，补发成功后按原有主键删除。
+
+建议使用失败重试功能的项目升级到 `1.1.1` 或更高版本。
 
 如果某些事件不需要失败重试，可在初始化时传入 `ignoreFailedEventCodes`：
 
@@ -243,13 +248,13 @@ await AnalyticTool.getInstance().initialize(
 插件会上报 Firebase 事件名：
 
 ```text
-{code}_{firebaseTypeCode}_{appVersionWithoutDots}
+{code}_{firebaseTypeCode}
 ```
 
 例如：
 
 ```text
-home_banner_clk_100
+home_banner_clk
 ```
 
 注意：Firebase 事件名长度不能超过 40 个字符。插件内部包含断言校验，建议控制 `code` 长度。
