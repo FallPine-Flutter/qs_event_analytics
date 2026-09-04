@@ -5,6 +5,7 @@ class AnalyticErrorModel {
   AnalyticErrorModel({this.id, this.data});
 
   AnalyticErrorModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     data = json['data'];
   }
 

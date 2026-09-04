@@ -46,11 +46,6 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin net_dio_request, com.example.net_dio_request.NetDioRequestPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin package_info_plus, dev.fluttercommunity.plus.packageinfo.PackageInfoPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new com.example.qs_event_analytics.QsEventAnalyticsPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin qs_event_analytics, com.example.qs_event_analytics.QsEventAnalyticsPlugin", e);

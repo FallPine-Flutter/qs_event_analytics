@@ -42,12 +42,6 @@
 @import net_dio_request;
 #endif
 
-#if __has_include(<package_info_plus/FPPPackageInfoPlusPlugin.h>)
-#import <package_info_plus/FPPPackageInfoPlusPlugin.h>
-#else
-@import package_info_plus;
-#endif
-
 #if __has_include(<qs_event_analytics/QsEventAnalyticsPlugin.h>)
 #import <qs_event_analytics/QsEventAnalyticsPlugin.h>
 #else
@@ -87,7 +81,6 @@
   [IntegrationTestPlugin registerWithRegistrar:[registry registrarForPlugin:@"IntegrationTestPlugin"]];
   [IpLocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"IpLocationPlugin"]];
   [NetDioRequestPlugin registerWithRegistrar:[registry registrarForPlugin:@"NetDioRequestPlugin"]];
-  [FPPPackageInfoPlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FPPPackageInfoPlusPlugin"]];
   [QsEventAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsEventAnalyticsPlugin"]];
   [QsStorageToolPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsStorageToolPlugin"]];
   [QsToastPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsToastPlugin"]];
