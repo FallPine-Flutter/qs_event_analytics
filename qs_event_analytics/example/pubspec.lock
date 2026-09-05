@@ -429,7 +429,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.1.0"
+    version: "1.1.1"
   qs_storage_tool:
     dependency: transitive
     description:

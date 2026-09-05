@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:ip_location/ip_location.dart';
 import 'package:net_dio_request/net_request.dart';
+import 'package:qs_event_analytics/analytic_api_parameter_name_model.dart';
 import 'package:qs_event_analytics/analytic_error_db.dart';
 import 'package:qs_event_analytics/analytic_error_model.dart';
 import 'package:qs_event_analytics/analytic_model.dart';
@@ -18,6 +19,7 @@ class AnalyticTool {
   Future<void> initialize({
     required String userid,
     required String api,
+    required AnalyticApiParameterNameModel apiParameterNameModel,
     required String systemVersion,
     required String appVersion,
     required List<String> ignoreFailedEventCodes,
@@ -25,6 +27,7 @@ class AnalyticTool {
   }) async {
     _userid = userid;
     _api = api;
+    _apiParameterNameModel = apiParameterNameModel;
     _systemVersion = systemVersion;
     _appVersion = appVersion;
     _ignoreFailedEventCodes = ignoreFailedEventCodes;
@@ -126,21 +129,25 @@ class AnalyticTool {
     // 是否测试环境
     bool isTest = !kReleaseMode;
 
+    if (_apiParameterNameModel == null) {
+      return;
+    }
+
     var parameters = {
-      "sessionId": sessionId,
-      "uuid": _userid,
-      "eventCode": eventCode,
-      "eventName": eventName,
-      "eventType": eventType.typeCode,
-      "eventTime": timestamp,
-      "userIp": loaction?.ip ?? "",
-      "countryCode": loaction?.country ?? "",
-      "cityCode": loaction?.city ?? "",
-      "systemVersion": _systemVersion,
-      "appVersion": _appVersion,
-      "attrPage": belongPage ?? "",
-      "eventContent": extraContent,
-      "env": isTest ? "dev" : "prd",
+      _apiParameterNameModel!.sessionId: sessionId,
+      _apiParameterNameModel!.uuid: _userid,
+      _apiParameterNameModel!.eventCode: eventCode,
+      _apiParameterNameModel!.eventName: eventName,
+      _apiParameterNameModel!.eventType: eventType.typeCode,
+      _apiParameterNameModel!.eventTime: timestamp,
+      _apiParameterNameModel!.userIp: loaction?.ip ?? "",
+      _apiParameterNameModel!.countryCode: loaction?.country ?? "",
+      _apiParameterNameModel!.cityCode: loaction?.city ?? "",
+      _apiParameterNameModel!.systemVersion: _systemVersion,
+      _apiParameterNameModel!.appVersion: _appVersion,
+      _apiParameterNameModel!.attrPage: belongPage ?? "",
+      _apiParameterNameModel!.eventContent: extraContent,
+      _apiParameterNameModel!.env: isTest ? "dev" : "prd",
     };
     try {
       var response = await NetRequest.shared.postJson(
@@ -260,6 +267,7 @@ class AnalyticTool {
   /// Property
   String _userid = "";
   String _api = "";
+  AnalyticApiParameterNameModel? _apiParameterNameModel;
   String _systemVersion = "";
   String _appVersion = "";
   String _sessionId = const Uuid().v4();
