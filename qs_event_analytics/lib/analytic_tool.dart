@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:ip_location/ip_location.dart';
-import 'package:net_dio_request/net_request.dart';
+import 'package:qs_ip_location/qs_ip_location.dart';
+import 'package:qs_net_request/qs_net_request.dart';
 import 'package:qs_event_analytics/analytic_api_parameter_name_model.dart';
 import 'package:qs_event_analytics/analytic_error_db.dart';
 import 'package:qs_event_analytics/analytic_error_model.dart';
@@ -123,7 +123,7 @@ class AnalyticTool {
     }
 
     // 获取位置信息
-    final loaction = await IpLocation.getIpLocation();
+    final loaction = await QsIpLocation.getIpLocation();
     // 将 extra 转为 JSON 字符串
     final extraContent = extra == null ? null : jsonEncode(extra);
     // 是否测试环境
@@ -141,8 +141,8 @@ class AnalyticTool {
       _apiParameterNameModel!.eventType: eventType.typeCode,
       _apiParameterNameModel!.eventTime: timestamp,
       _apiParameterNameModel!.userIp: loaction?.ip ?? "",
-      _apiParameterNameModel!.countryCode: loaction?.country ?? "",
-      _apiParameterNameModel!.cityCode: loaction?.city ?? "",
+      _apiParameterNameModel!.countryCode: loaction?.countryName ?? "",
+      _apiParameterNameModel!.cityCode: loaction?.cityName ?? "",
       _apiParameterNameModel!.systemVersion: _systemVersion,
       _apiParameterNameModel!.appVersion: _appVersion,
       _apiParameterNameModel!.attrPage: belongPage ?? "",
@@ -150,7 +150,7 @@ class AnalyticTool {
       _apiParameterNameModel!.env: isTest ? "dev" : "prd",
     };
     try {
-      var response = await NetRequest.shared.postJson(
+      var response = await QsNetRequest.getInstance().postJson(
         _api,
         parameters: parameters,
         isShowLoading: false,

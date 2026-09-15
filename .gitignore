@@ -1,0 +1,76 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code workspace settings are intentionally kept available for sharing.
+# .vscode/
+
+# Flutter, Dart, and Pub related
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/.pub/
+**/.pub-cache/
+**/build/
+**/coverage/
+**/doc/api/
+**/lcov.info
+**/test-results/
+**/app.*.symbols
+**/app.*.map.json
+
+# Reusable plugin packages do not commit their root dependency lock file.
+/qs_event_analytics/pubspec.lock
+
+# FVM SDK cache; keep .fvmrc and other shared version configuration.
+**/.fvm/flutter_sdk
+
+# Android generated and machine-local files
+**/android/.gradle/
+**/android/.cxx/
+**/android/local.properties
+**/android/captures/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+**/android/key.properties
+**/*.jks
+**/*.keystore
+
+# iOS generated and machine-local files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/DerivedData/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Runner/GeneratedPluginRegistrant.h
+**/ios/Runner/GeneratedPluginRegistrant.m
+**/ios/**/*.xcuserdatad/
+**/ios/**/*.xcuserstate
+**/*.xcarchive
+**/*.ipa
+**/*.dSYM/
+
+# Temporary editor files
+*~
+*.tmp

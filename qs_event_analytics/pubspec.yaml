@@ -11,10 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  net_dio_request: ^1.0.0
+  qs_net_request:
+    path: ../../qs_net_request/qs_net_request
   firebase_core: ^4.4.0
   firebase_analytics: ^12.1.1
-  ip_location: ^1.0.0
+  qs_ip_location:
+    path: ../../qs_ip_location/qs_ip_location
   uuid: ^4.5.2
   connectivity_plus: ^7.0.0
   event_bus: ^2.0.1

@@ -36,24 +36,24 @@ public final class GeneratedPluginRegistrant {
       Log.e(TAG, "Error registering plugin integration_test, dev.flutter.plugins.integration_test.IntegrationTestPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.example.ip_location.IpLocationPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin ip_location, com.example.ip_location.IpLocationPlugin", e);
-    }
-    try {
-      flutterEngine.getPlugins().add(new com.example.net_dio_request.NetDioRequestPlugin());
-    } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin net_dio_request, com.example.net_dio_request.NetDioRequestPlugin", e);
-    }
-    try {
       flutterEngine.getPlugins().add(new com.example.qs_event_analytics.QsEventAnalyticsPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin qs_event_analytics, com.example.qs_event_analytics.QsEventAnalyticsPlugin", e);
     }
     try {
-      flutterEngine.getPlugins().add(new com.example.qs_storage_tool.QsStorageToolPlugin());
+      flutterEngine.getPlugins().add(new com.example.qs_ip_location.QsIpLocationPlugin());
     } catch (Exception e) {
-      Log.e(TAG, "Error registering plugin qs_storage_tool, com.example.qs_storage_tool.QsStorageToolPlugin", e);
+      Log.e(TAG, "Error registering plugin qs_ip_location, com.example.qs_ip_location.QsIpLocationPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.example.qs_log.QsLogPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin qs_log, com.example.qs_log.QsLogPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.example.qs_net_request.QsNetRequestPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin qs_net_request, com.example.qs_net_request.QsNetRequestPlugin", e);
     }
     try {
       flutterEngine.getPlugins().add(new com.example.qs_toast.QsToastPlugin());

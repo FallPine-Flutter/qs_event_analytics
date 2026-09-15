@@ -30,28 +30,28 @@
 @import integration_test;
 #endif
 
-#if __has_include(<ip_location/IpLocationPlugin.h>)
-#import <ip_location/IpLocationPlugin.h>
-#else
-@import ip_location;
-#endif
-
-#if __has_include(<net_dio_request/NetDioRequestPlugin.h>)
-#import <net_dio_request/NetDioRequestPlugin.h>
-#else
-@import net_dio_request;
-#endif
-
 #if __has_include(<qs_event_analytics/QsEventAnalyticsPlugin.h>)
 #import <qs_event_analytics/QsEventAnalyticsPlugin.h>
 #else
 @import qs_event_analytics;
 #endif
 
-#if __has_include(<qs_storage_tool/QsStorageToolPlugin.h>)
-#import <qs_storage_tool/QsStorageToolPlugin.h>
+#if __has_include(<qs_ip_location/QsIpLocationPlugin.h>)
+#import <qs_ip_location/QsIpLocationPlugin.h>
 #else
-@import qs_storage_tool;
+@import qs_ip_location;
+#endif
+
+#if __has_include(<qs_log/QsLogPlugin.h>)
+#import <qs_log/QsLogPlugin.h>
+#else
+@import qs_log;
+#endif
+
+#if __has_include(<qs_net_request/QsNetRequestPlugin.h>)
+#import <qs_net_request/QsNetRequestPlugin.h>
+#else
+@import qs_net_request;
 #endif
 
 #if __has_include(<qs_toast/QsToastPlugin.h>)
@@ -79,10 +79,10 @@
   [FirebaseAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FirebaseAnalyticsPlugin"]];
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
   [IntegrationTestPlugin registerWithRegistrar:[registry registrarForPlugin:@"IntegrationTestPlugin"]];
-  [IpLocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"IpLocationPlugin"]];
-  [NetDioRequestPlugin registerWithRegistrar:[registry registrarForPlugin:@"NetDioRequestPlugin"]];
   [QsEventAnalyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsEventAnalyticsPlugin"]];
-  [QsStorageToolPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsStorageToolPlugin"]];
+  [QsIpLocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsIpLocationPlugin"]];
+  [QsLogPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsLogPlugin"]];
+  [QsNetRequestPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsNetRequestPlugin"]];
   [QsToastPlugin registerWithRegistrar:[registry registrarForPlugin:@"QsToastPlugin"]];
   [SharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"SharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
