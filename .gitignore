@@ -36,8 +36,13 @@ migrate_working_dir/
 **/app.*.symbols
 **/app.*.map.json
 
-# Reusable plugin packages do not commit their root dependency lock file.
+# Reusable plugin packages and their bundled example apps do not commit
+# dependency-resolution files that Flutter/CocoaPods can reproduce.
 /qs_event_analytics/pubspec.lock
+**/example/pubspec.lock
+**/example/ios/Podfile
+**/example/ios/Flutter/Debug.xcconfig
+**/example/ios/Flutter/Release.xcconfig
 
 # FVM SDK cache; keep .fvmrc and other shared version configuration.
 **/.fvm/flutter_sdk

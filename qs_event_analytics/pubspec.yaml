@@ -1,6 +1,6 @@
 name: qs_event_analytics
 description: "一个轨迹打点分析的插件"
-version: 1.1.4
+version: 1.1.5
 homepage: "https://github.com/fallpine/qs_event_analytics"
 
 environment:
@@ -10,18 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
-  qs_net_request:
-    path: ../../qs_net_request/qs_net_request
-  firebase_core: ^4.4.0
-  firebase_analytics: ^12.1.1
-  qs_ip_location:
-    path: ../../qs_ip_location/qs_ip_location
-  uuid: ^4.5.2
-  connectivity_plus: ^7.0.0
-  event_bus: ^2.0.1
-  sqflite: ^2.4.2
-  path: ^1.9.1
+  firebase_core: ^4.15.0  # Firebase 核心插件
+  firebase_analytics: ^12.6.0  # Firebase 分析插件
+  uuid: ^4.6.0  # UUID 插件
+  connectivity_plus: ^7.3.1  # 连接插件
+  event_bus: ^2.0.1  # 事件总线插件
+  sqflite: ^2.4.2  # SQLite 插件
+  path: ^1.9.1  # 路径插件
+  qs_net_request: ^1.0.1  # 网络请求插件
+  qs_ip_location: ^1.0.1  # IP 位置插件
 
 dev_dependencies:
   flutter_test:
